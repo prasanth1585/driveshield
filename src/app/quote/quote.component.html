@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h5 class="card-title text-center">Quote Summary</h5>
+          <div class="mt-3">
+            <h6>Vehicles ({{ numberOfCars }}):</h6>
+            <ul>
+              <li *ngFor="let vehicle of vehicles">
+                Make: {{ vehicle.make }}, Model: {{ vehicle.model }}, Year: {{ vehicle.year }}
+              </li>
+            </ul>
+          </div>
+          <div class="mt-3">
+            <h6>Drivers ({{ numberOfDrivers }}):</h6>
+            <ul>
+              <li *ngFor="let driver of drivers">
+                Name: {{ driver.name }}, Age: {{ driver.age }}, License Number: {{ driver.licenseNumber }}
+              </li>
+            </ul>
+          </div>
+          <div class="mt-3">
+            <h6>Estimated Quote: ${{ quote }}</h6>
+          </div>
+          <button type="button" class="btn btn-primary mt-3 w-100" (click)="proceedToPayment()">Proceed to Payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

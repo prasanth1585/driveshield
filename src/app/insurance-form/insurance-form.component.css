@@ -1,0 +1,28 @@
+/* filepath: /c:/Users/pvipparl/workspace/DriveShield/src/app/insurance-form/insurance-form.component.css */
+.container {
+    margin-top: 5rem;
+  }
+  
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .btn-outline-primary {
+    border-radius: 5px;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }

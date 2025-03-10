@@ -1,0 +1,40 @@
+/* filepath: /c:/Users/pvipparl/workspace/DriveShield/src/app/header/header.component.css */
+.navbar {
+    background-image: url('/assets/images/car-background.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .navbar-brand .logo {
+    height: 60px; /* Increase the size of the logo */
+  }
+  
+  .navbar-brand .brand-text {
+    color: #800020; /* Burgundy color */
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    margin-left: 10px; /* Add some space between the logo and text */
+  }
+  
+  .navbar-nav .nav-link {
+    color: white !important;
+  }
+  
+  .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .dropdown-item {
+    color: white !important;
+  }
+  
+  .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
