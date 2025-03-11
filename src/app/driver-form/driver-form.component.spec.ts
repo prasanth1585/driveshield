@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 import { DriverFormComponent } from './driver-form.component';
 
 describe('DriverFormComponent', () => {
@@ -8,7 +9,15 @@ describe('DriverFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DriverFormComponent]
+      imports: [DriverFormComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            queryParams: of({ drivers: 2 })
+          }
+        }
+      ]
     })
     .compileComponents();
 
