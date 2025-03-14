@@ -4,16 +4,7 @@ import { FormBuilder, FormGroup, FormArray, Validators, FormsModule, ReactiveFor
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf, CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
-interface Vehicle {
-  make: string;
-  models: Model[];
-}
-
-interface Model {
-  name: string;
-  years: number[];
-}
+import { Vehicle, Model } from '../models/vehicle.model';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -27,6 +18,7 @@ export class VehicleFormComponent implements OnInit {
   vehicleForms: FormArray;
   form: FormGroup;
   numberOfDrivers: number = 1;
+  models: Model[][] = []; // Array to store models for each vehicle form
 
   constructor(
     private vehicleService: VehicleService,
@@ -54,8 +46,13 @@ export class VehicleFormComponent implements OnInit {
 
   addVehicleForms(numberOfCars: number) {
     for (let i = 0; i < numberOfCars; i++) {
-      this.vehicleForms.push(this.createVehicleForm());
+      this.addVehicleForm();
     }
+  }
+
+  addVehicleForm() {
+    this.vehicleForms.push(this.createVehicleForm());
+    this.models.push([]); // Initialize models array for each vehicle form
   }
 
   createVehicleForm(): FormGroup {
@@ -66,9 +63,15 @@ export class VehicleFormComponent implements OnInit {
     });
   }
 
-  getModels(index: number): Model[] {
+  onMakeChange(index: number): void {
     const make = this.vehicleForms.at(index).get('make')?.value;
-    return this.vehicles.find(v => v.make === make)?.models || [];
+    const vehicle = this.vehicles.find(v => v.make === make);
+    if (vehicle) {
+      this.models[index] = vehicle.models; // Update models array for the specific vehicle form
+      this.vehicleForms.at(index).get('model')?.setValue('');
+      this.vehicleForms.at(index).get('model')?.setValidators([Validators.required]);
+      this.vehicleForms.at(index).get('model')?.updateValueAndValidity();
+    }
   }
 
   getYears(index: number): number[] {

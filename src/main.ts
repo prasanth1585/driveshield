@@ -10,6 +10,7 @@ import { VehicleFormComponent } from './app/vehicle-form/vehicle-form.component'
 import { DriverFormComponent } from './app/driver-form/driver-form.component';
 import { QuoteComponent } from './app/quote/quote.component';
 import { PaymentComponent } from './app/payment/payment.component';
+import { DashboardComponent } from './app/dashboard/dashboard.component';
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(), // ✅ Correctly provide HttpClient
@@ -21,6 +22,7 @@ bootstrapApplication(AppComponent, {
           { path: 'driver-form', component: DriverFormComponent },
           { path: 'quote', component: QuoteComponent },
           { path: 'payment', component: PaymentComponent },
+          { path: 'dashboard', component: DashboardComponent },
       ],
       withComponentInputBinding()
     )

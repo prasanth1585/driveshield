@@ -5,20 +5,44 @@
         <div class="card-body">
           <h5 class="card-title text-center">Quote Summary</h5>
           <div class="mt-3">
-            <h6>Vehicles ({{ numberOfCars }}):</h6>
-            <ul>
-              <li *ngFor="let vehicle of vehicles">
-                Make: {{ vehicle.make }}, Model: {{ vehicle.model }}, Year: {{ vehicle.year }}
-              </li>
-            </ul>
+            <h6>Number of Cars: {{ numberOfCars }}</h6>
+            <h6>Vehicles:</h6>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Make</th>
+                  <th>Model</th>
+                  <th>Year</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let vehicle of vehicles">
+                  <td>{{ vehicle.make }}</td>
+                  <td>{{ vehicle.model }}</td>
+                  <td>{{ vehicle.year }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="mt-3">
-            <h6>Drivers ({{ numberOfDrivers }}):</h6>
-            <ul>
-              <li *ngFor="let driver of drivers">
-                Name: {{ driver.name }}, Age: {{ driver.age }}, License Number: {{ driver.licenseNumber }}
-              </li>
-            </ul>
+            <h6>Number of Drivers: {{ numberOfDrivers }}</h6>
+            <h6>Drivers:</h6>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>License Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let driver of drivers">
+                  <td>{{ driver.name }}</td>
+                  <td>{{ driver.age }}</td>
+                  <td>{{ driver.licenseNumber }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="mt-3">
             <h6>Estimated Quote: ${{ quote }}</h6>

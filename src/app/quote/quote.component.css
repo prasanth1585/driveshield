@@ -1,0 +1,15 @@
+.cars-section {
+    background-color: #d1ecf1; /* Light blue background for Cars section */
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .drivers-section {
+    background-color: #f8d7da; /* Light red background for Drivers section */
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem;
+  }
