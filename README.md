@@ -57,3 +57,12 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+Application information:
+This is a simple angular application to demonstrate Copilot advantages.
+
+Setup:
+This application connects to APIs from backend.
+Repo URLS
+https://github.com/prasanth1585/vehicle.git
+https://github.com/prasanth1585/usermgmt.git

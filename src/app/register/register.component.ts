@@ -28,7 +28,7 @@ export class RegisterComponent {
     this.http.post('http://localhost:8081/api/users/register', this.registerUser, { responseType: 'text' })
       .subscribe(response => {
         console.log('User registered successfully', response);
-        this.router.navigate(['/']);
+        this.router.navigate(['/']); // Navigate to the login page
       }, error => {
         console.error('Error registering user', error);
       });
