@@ -6,6 +6,7 @@ import { DriverFormComponent } from './driver-form/driver-form.component';
 import { QuoteComponent } from './quote/quote.component';
 import { PaymentComponent } from './payment/payment.component'; // Import the payment component
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'driver-form', component: DriverFormComponent },
   { path: 'quote', component: QuoteComponent },
   { path: 'payment', component: PaymentComponent },
-  { path: 'dashboard', component: DashboardComponent } // Add the payment route
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'register', component: RegisterComponent }, // Add the payment route
   // other routes...
 ];

@@ -11,6 +11,7 @@ import { DriverFormComponent } from './app/driver-form/driver-form.component';
 import { QuoteComponent } from './app/quote/quote.component';
 import { PaymentComponent } from './app/payment/payment.component';
 import { DashboardComponent } from './app/dashboard/dashboard.component';
+import { RegisterComponent } from './app/register/register.component';
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(), // ✅ Correctly provide HttpClient
@@ -23,6 +24,7 @@ bootstrapApplication(AppComponent, {
           { path: 'quote', component: QuoteComponent },
           { path: 'payment', component: PaymentComponent },
           { path: 'dashboard', component: DashboardComponent },
+          { path: 'register', component: RegisterComponent },
       ],
       withComponentInputBinding()
     )

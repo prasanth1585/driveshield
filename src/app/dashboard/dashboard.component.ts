@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,11 +13,22 @@ export class DashboardComponent implements OnInit {
   userDetails: any;
   username: string = '';
 
+  constructor(private router: Router) {}
+
   ngOnInit() {
-    const userDetailsString = localStorage.getItem('userDetails');
-    if (userDetailsString) {
-      this.userDetails = JSON.parse(userDetailsString);
-      this.username = this.userDetails.email;
+    if (typeof localStorage !== 'undefined') {
+      const userDetailsString = localStorage.getItem('userDetails');
+      if (userDetailsString) {
+        this.userDetails = JSON.parse(userDetailsString);
+        this.username = this.userDetails.email;
+      }
     }
+  }
+
+  onLogout() {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem('userDetails');
+    }
+    this.router.navigate(['/']);
   }
 }
