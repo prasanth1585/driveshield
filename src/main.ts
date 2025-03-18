@@ -12,6 +12,7 @@ import { QuoteComponent } from './app/quote/quote.component';
 import { PaymentComponent } from './app/payment/payment.component';
 import { DashboardComponent } from './app/dashboard/dashboard.component';
 import { RegisterComponent } from './app/register/register.component';
+import { CapitalizePipe } from './app/pipe/capitalize.pipe';
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(), // ✅ Correctly provide HttpClient
@@ -27,6 +28,7 @@ bootstrapApplication(AppComponent, {
           { path: 'register', component: RegisterComponent },
       ],
       withComponentInputBinding()
-    )
+    ),
+    importProvidersFrom(CapitalizePipe)
   ]
 }).catch(err => console.error(err));

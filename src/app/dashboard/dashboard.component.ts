@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CapitalizePipe } from '../pipe/capitalize.pipe';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CapitalizePipe],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })

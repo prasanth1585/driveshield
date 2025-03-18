@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-end">
     <div class="col-md-3 text-right">
-      <h5>Welcome, {{ firstName }} {{ lastName }}</h5>
+      <h5>Welcome, {{ firstName | capitalize }} {{ lastName | capitalize }}</h5>
       <button class="btn btn-danger" (click)="onLogout()">Logout</button>
     </div>
   </div>
@@ -9,12 +9,31 @@
     <div class="col-md-12">
       <div class="card shadow-lg">
         <div class="card-body">
-          <h5 class="card-title text-center">Policy Information</h5>
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="#" class="btn btn-link">Claims</a>
+            <h5 class="card-title text-center">Policy Information</h5>
+            <a href="#" class="btn btn-link">ID Cards</a>
+          </div>
           <div *ngFor="let policy of policies; let i = index">
             <h6>Policy Number: {{ policy.policyNumber }}</h6>
-            <p>Status: {{ policy.status }}</p>
-            <p>Start Date: {{ policy.startDate | date }}</p>
-            <p>End Date: {{ policy.endDate | date }}</p>
+            <div class="policy-details">
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <td>Status:</td>
+                    <td>{{ policy.status }}</td>
+                  </tr>
+                  <tr>
+                    <td>Start Date:</td>
+                    <td>{{ policy.startDate | date }}</td>
+                  </tr>
+                  <tr>
+                    <td>End Date:</td>
+                    <td>{{ policy.endDate | date }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <h6>Vehicles:</h6>
             <table class="table table-striped">
               <thead>
@@ -46,8 +65,8 @@
               </thead>
               <tbody>
                 <tr *ngFor="let driver of policy.drivers">
-                  <td>{{ driver.firstName }}</td>
-                  <td>{{ driver.lastName }}</td>
+                  <td>{{ driver.firstName | capitalize }}</td>
+                  <td>{{ driver.lastName | capitalize }}</td>
                   <td>{{ driver.dob | date }}</td>
                   <td>{{ driver.licenseNumber }}</td>
                 </tr>

@@ -1,58 +1,17 @@
-/* Basic CSS for Dashboard Component */
-
-:host {
-    display: block;
-    padding: 16px;
-    background-color: #f5f5f5;
-    font-family: Arial, sans-serif;
-}
-
-h1 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 16px;
-}
-
-p {
-    color: #666;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-button {
-    background-color: #007bff;
-    color: white;
+.policy-details {
+    font-size: 0.9rem;
+    margin-left: 20px;
+  }
+  
+  .policy-details table {
+    width: auto;
+  }
+  
+  .policy-details td {
+    padding: 0.25rem 0.5rem;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-h6 {
-    margin-top: 20px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-ul li {
-    margin-bottom: 10px;
-}
-
-.table {
-    margin-top: 10px;
-}
-
-.collapsed {
-    cursor: pointer;
-}
+  }
+  
+  .policy-details td:first-child {
+    font-weight: bold;
+  }
