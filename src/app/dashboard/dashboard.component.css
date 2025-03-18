@@ -32,3 +32,27 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.card-body {
+    padding: 20px;
+}
+
+h6 {
+    margin-top: 20px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.table {
+    margin-top: 10px;
+}
+
+.collapsed {
+    cursor: pointer;
+}

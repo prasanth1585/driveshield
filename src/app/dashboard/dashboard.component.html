@@ -1,20 +1,67 @@
 <div class="container mt-5">
   <div class="row justify-content-end">
     <div class="col-md-3 text-right">
-      <h5>Welcome, {{ username }}</h5>
+      <h5>Welcome, {{ firstName }} {{ lastName }}</h5>
       <button class="btn btn-danger" (click)="onLogout()">Logout</button>
     </div>
   </div>
   <div class="row justify-content-center mt-3">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="card shadow-lg">
         <div class="card-body">
-          <h5 class="card-title text-center">User Details</h5>
-          <p><strong>First Name:</strong> {{ userDetails.firstName }}</p>
-          <p><strong>Last Name:</strong> {{ userDetails.lastName }}</p>
-          <p><strong>Email:</strong> {{ userDetails.email }}</p>
-          <p><strong>Phone Number:</strong> {{ userDetails.phoneNumber }}</p>
-          <p><strong>Address:</strong> {{ userDetails.address }}</p>
+          <h5 class="card-title text-center">Policy Information</h5>
+          <div *ngFor="let policy of policies; let i = index">
+            <h6>Policy Number: {{ policy.policyNumber }}</h6>
+            <p>Status: {{ policy.status }}</p>
+            <p>Start Date: {{ policy.startDate | date }}</p>
+            <p>End Date: {{ policy.endDate | date }}</p>
+            <h6>Vehicles:</h6>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Make</th>
+                  <th>Model</th>
+                  <th>Year</th>
+                  <th>VIN</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let vehicle of policy.vehicles">
+                  <td>{{ vehicle.make }}</td>
+                  <td>{{ vehicle.model }}</td>
+                  <td>{{ vehicle.year }}</td>
+                  <td>{{ vehicle.vin }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <h6>Drivers:</h6>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Date of Birth</th>
+                  <th>License Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let driver of policy.drivers">
+                  <td>{{ driver.firstName }}</td>
+                  <td>{{ driver.lastName }}</td>
+                  <td>{{ driver.dob | date }}</td>
+                  <td>{{ driver.licenseNumber }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <h6>Policy Coverages:</h6>
+            <ul>
+              <li *ngFor="let coverage of policy.policyCoverages">
+                <ng-container *ngIf="coverage.standardCoverage">
+                  {{ coverage.standardCoverage.name }}: {{ coverage.standardCoverage.description }} (Limit: {{ coverage.limitAmount }})
+                </ng-container>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
