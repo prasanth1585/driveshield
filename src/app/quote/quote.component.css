@@ -1,15 +1,23 @@
-.cars-section {
-    background-color: #d1ecf1; /* Light blue background for Cars section */
-    padding: 15px;
-    border-radius: 5px;
-  }
-  
-  .drivers-section {
-    background-color: #f8d7da; /* Light red background for Drivers section */
-    padding: 15px;
-    border-radius: 5px;
-  }
-  
-  .mt-3 {
-    margin-top: 1rem;
-  }
+.label-text {
+  font-size: 0.875rem; /* Decrease text size */
+  font-weight: bold; /* Make labels bold */
+}
+
+.value-text {
+  font-size: 0.875rem; /* Decrease text size */
+  color: #555; /* Different color for values */
+}
+
+.btn-danger {
+  background-color: red;
+  border-color: red;
+}
+
+.rounded-button {
+  border-radius: 0.25rem; /* Rounded corners */
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem; /* Adjust button size to match text size */
+  font-size: 0.875rem;
+}

@@ -13,6 +13,8 @@ import { PaymentComponent } from './app/payment/payment.component';
 import { DashboardComponent } from './app/dashboard/dashboard.component';
 import { RegisterComponent } from './app/register/register.component';
 import { CapitalizePipe } from './app/pipe/capitalize.pipe';
+import { AddCoverageComponent } from './app/add-coverage/add-coverage.component';
+import { LoginComponent } from './app/login/login.component';
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(), // ✅ Correctly provide HttpClient
@@ -26,6 +28,8 @@ bootstrapApplication(AppComponent, {
           { path: 'payment', component: PaymentComponent },
           { path: 'dashboard', component: DashboardComponent },
           { path: 'register', component: RegisterComponent },
+          { path: 'add-coverage', component: AddCoverageComponent },
+          { path: 'login', component:LoginComponent },
       ],
       withComponentInputBinding()
     ),

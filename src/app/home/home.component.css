@@ -1,34 +1,85 @@
-/* filepath: /c:/Users/pvipparl/workspace/DriveShield/src/app/home/home.component.css */
-.container {
-    margin-top: 5rem;
-  }
-  
-  .card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-  }
-  
-  .form-control {
-    border-radius: 5px;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    border-radius: 5px;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
+.container-fluid {
+  margin-top: 0;
+  padding: 0;
+}
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.btn-link {
+  font-size: 1rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-small {
+  padding: 5px 10px; /* Reduced size */
+  font-size: 0.875rem; /* Smaller font size */
+}
+
+.info-background {
+  background-image: url('/assets/images/InfoBackground.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.info-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.info-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.info-content p {
+  font-size: 1.2rem;
+}

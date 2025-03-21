@@ -3,51 +3,70 @@
     <div class="col-md-8">
       <div class="card shadow-lg">
         <div class="card-body">
-          <h5 class="card-title text-center">Quote Summary</h5>
-          <div class="mt-3">
-            <h6>Number of Cars: {{ numberOfCars }}</h6>
-            <h6>Vehicles:</h6>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Make</th>
-                  <th>Model</th>
-                  <th>Year</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let vehicle of vehicles">
-                  <td>{{ vehicle.make }}</td>
-                  <td>{{ vehicle.model }}</td>
-                  <td>{{ vehicle.year }}</td>
-                </tr>
-              </tbody>
-            </table>
+          <h5 class="card-title text-center">{{ isSubmitted ? 'Quote Summary' : 'Review Information' }}</h5>
+          <div class="form-group mt-3">
+            <label class="small-text">First Name</label>
+            <p class="small-text">{{ policyHolder.firstName }}</p>
           </div>
-          <div class="mt-3">
-            <h6>Number of Drivers: {{ numberOfDrivers }}</h6>
-            <h6>Drivers:</h6>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>License Number</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let driver of drivers">
-                  <td>{{ driver.name }}</td>
-                  <td>{{ driver.age }}</td>
-                  <td>{{ driver.licenseNumber }}</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="form-group mt-3">
+            <label class="small-text">Last Name</label>
+            <p class="small-text">{{ policyHolder.lastName }}</p>
           </div>
-          <div class="mt-3">
-            <h6>Estimated Quote: ${{ quote }}</h6>
+          <div class="form-group mt-3">
+            <label class="small-text">Email ID</label>
+            <p class="small-text">{{ policyHolder.email }}</p>
           </div>
-          <button type="button" class="btn btn-primary mt-3 w-100" (click)="proceedToPayment()">Proceed to Payment</button>
+          <div class="form-group mt-3">
+            <label class="small-text">Phone Number</label>
+            <p class="small-text">{{ policyHolder.phoneNumber }}</p>
+          </div>
+          <div class="form-group mt-3">
+            <label class="small-text">Address</label>
+            <p class="small-text">{{ policyHolder.address }}</p>
+          </div>
+          <div class="form-group mt-3">
+            <label class="small-text">Selected Vehicles</label>
+            <ul class="list-group">
+              <li *ngFor="let vehicle of policy.vehicles" class="list-group-item small-text">
+                {{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.year }}) - VIN: {{ vehicle.vin }}
+              </li>
+            </ul>
+          </div>
+          <div class="form-group mt-3">
+            <label class="small-text">Added Drivers</label>
+            <ul class="list-group">
+              <li *ngFor="let driver of policy.drivers" class="list-group-item small-text">
+                {{ driver.firstName }} {{ driver.lastName }} - License: {{ driver.licenseNumber }}
+              </li>
+            </ul>
+          </div>
+          <div class="form-group mt-3">
+            <label class="small-text">Selected Coverages</label>
+            <ul class="list-group">
+              <li *ngFor="let coverage of policy.policyCoverages" class="list-group-item small-text">
+                {{ coverage.standardCoverage.name }} - {{ coverage.standardCoverage.description }} ({{ coverage.standardCoverage.premiumRate }})
+              </li>
+            </ul>
+          </div>
+          <button *ngIf="!isSubmitted" type="button" class="btn btn-darkred mt-3" (click)="onSubmit()">Calculate Quote</button>
+          <div *ngIf="quoteAmount !== null" class="mt-3">
+            <h5 class="text-center">Calculated Quote: {{ quoteAmount | currency }}</h5>
+            <form [formGroup]="userProfileForm" (ngSubmit)="submitQuote()">
+              <div class="form-group mt-3">
+                <label for="username" class="small-text">Username</label>
+                <input type="text" id="username" class="form-control small-text" formControlName="username">
+              </div>
+              <div class="form-group mt-3">
+                <label for="password" class="small-text">Password</label>
+                <input type="password" id="password" class="form-control small-text" formControlName="password">
+              </div>
+              <div class="form-group mt-3">
+                <label for="confirmPassword" class="small-text">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control small-text" formControlName="confirmPassword">
+              </div>
+              <button type="submit" class="btn btn-darkred mt-3 w-100">Submit Quote</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

@@ -1,29 +1,42 @@
 <div class="container mt-5">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div formArrayName="vehicles">
-      <div *ngFor="let vehicleForm of vehicleForms.controls; let i = index" [formGroupName]="i">
+      <div *ngFor="let vehicleForm of vehicleForms.controls; let i = index" [formGroupName]="i" class="mb-4">
         <h5 class="mt-3">Vehicle {{ i + 1 }}</h5>
-        <div class="form-group">
-          <label for="make">Make</label>
-          <select id="make" class="form-control" formControlName="make" (change)="onMakeChange(i)">
-            <option *ngFor="let vehicle of vehicles" [value]="vehicle.make">{{ vehicle.make }}</option>
-          </select>
-        </div>
-        <div class="form-group mt-3">
-          <label for="model">Model</label>
-          <select id="model" class="form-control" formControlName="model">
-            <option *ngFor="let model of models[i]" [value]="model.name">{{ model.name }}</option>
-          </select>
-        </div>
-        <div class="form-group mt-3">
-          <label for="year">Year</label>
-          <select id="year" class="form-control" formControlName="year">
-            <option *ngFor="let year of getYears(i)" [value]="year">{{ year }}</option>
-          </select>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="make" class="small-text">Make</label>
+              <select id="make" class="form-control small-text" formControlName="make" (change)="onMakeChange(i)">
+                <option *ngFor="let vehicle of vehicles" [value]="vehicle.make">{{ vehicle.make }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="model" class="small-text">Model</label>
+              <select id="model" class="form-control small-text" formControlName="model">
+                <option *ngFor="let model of models[i]" [value]="model.name">{{ model.name }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="year" class="small-text">Year</label>
+              <select id="year" class="form-control small-text" formControlName="year">
+                <option *ngFor="let year of getYears(i)" [value]="year">{{ year }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="vin" class="small-text">VIN</label>
+              <input type="text" id="vin" class="form-control small-text" formControlName="vin">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-secondary mt-3" (click)="addVehicleForm()">Add Another Vehicle</button>
-    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    <button type="submit" class="btn btn-darkred mt-3">Next: Add Drivers</button>
   </form>
 </div>

@@ -1,0 +1,16 @@
+.row.mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-control {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .form-check-input {
+    margin-top: 0.5rem;
+  }
+  
+  h5 {
+    margin-bottom: 0.5rem;
+  }

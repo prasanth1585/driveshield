@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormArray, Validators, FormsModule, ReactiveFor
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf, CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { PolicyService } from '../services/policy.service';
+import { Driver } from '../interfaces/policy';
 
 @Component({
   selector: 'app-driver-form',
@@ -14,12 +16,12 @@ import { HttpClientModule } from '@angular/common/http';
 export class DriverFormComponent implements OnInit {
   driverForms: FormArray;
   form: FormGroup;
-  vehicles: any[] = [];
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private policyService: PolicyService
   ) {
     this.driverForms = this.fb.array([]);
     this.form = this.fb.group({
@@ -30,7 +32,6 @@ export class DriverFormComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const numberOfDrivers = +params['drivers'] || 1;
-      this.vehicles = JSON.parse(params['vehicles'] || '[]');
       this.addDriverForms(numberOfDrivers);
     });
   }
@@ -43,14 +44,29 @@ export class DriverFormComponent implements OnInit {
 
   createDriverForm(): FormGroup {
     return this.fb.group({
-      name: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(18)]],
-      licenseNumber: ['', Validators.required]
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      dob: ['', Validators.required],
+      licenseNumber: ['', Validators.required],
+      isPrimary: [false, Validators.required]
     });
   }
 
-  onSubmit() {
-    const drivers = this.form.value.drivers;
-    this.router.navigate(['/quote'], { queryParams: { vehicles: JSON.stringify(this.vehicles), drivers: JSON.stringify(drivers) } });
+  navigateToAddCoverage() {
+    const newDrivers: Driver[] = this.form.value.drivers.map((driver: any) => ({
+      id: 0,
+      autoPolicy: '',
+      firstName: driver.firstName,
+      lastName: driver.lastName,
+      dob: driver.dob,
+      licenseNumber: driver.licenseNumber,
+      primary: driver.isPrimary
+    }));
+
+    const existingDrivers = this.policyService.getPolicyData().drivers || [];
+    const allDrivers = [...existingDrivers, ...newDrivers];
+
+    this.policyService.setPolicyData({ drivers: allDrivers });
+    this.router.navigate(['/add-coverage']);
   }
 }

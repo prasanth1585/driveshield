@@ -1,44 +1,75 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PolicyService } from '../services/policy.service';
+import { Policy, PolicyHolder } from '../interfaces/policy';
 
 @Component({
   selector: 'app-quote',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './quote.component.html',
   styleUrls: ['./quote.component.css']
 })
 export class QuoteComponent implements OnInit {
-  vehicles: any[] = [];
-  drivers: any[] = [];
-  numberOfCars: number = 0;
-  numberOfDrivers: number = 0;
-  quote: number = 0;
+  policy: Policy;
+  policyHolder: PolicyHolder;
+  isSubmitted: boolean = false;
+  quoteAmount: number | null = null;
+  userProfileForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
-
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.vehicles = JSON.parse(params['vehicles'] || '[]');
-      this.drivers = JSON.parse(params['drivers'] || '[]');
-      this.numberOfCars = this.vehicles.length;
-      this.numberOfDrivers = this.drivers.length;
-      this.calculateQuote();
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private policyService: PolicyService
+  ) {
+    this.policy = this.policyService.getPolicyData();
+    this.policyHolder = this.policyService.getPolicyHolderData();
+    this.userProfileForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
+  ngOnInit(): void {}
+
   calculateQuote() {
-    // Sample calculation: base price + price per car + price per driver
-    const basePrice = 100;
-    const pricePerCar = 50;
-    const pricePerDriver = 30;
-    this.quote = basePrice + (this.numberOfCars * pricePerCar) + (this.numberOfDrivers * pricePerDriver);
+    this.policyService.calculateQuote().subscribe(response => {
+      this.quoteAmount = response;
+      console.log('Quote calculated successfully', response);
+    }, error => {
+      console.error('Error calculating quote', error);
+    });
   }
 
-  proceedToPayment() {
-    // Navigate to the payment page
-    this.router.navigate(['/payment'], { queryParams: { quote: this.quote } });
+  onSubmit() {
+    this.isSubmitted = true;
+    this.calculateQuote();
+  }
+
+  submitQuote() {
+    if (this.userProfileForm.valid) {
+      const { username, password } = this.userProfileForm.value;
+      this.policyHolder.username = username;
+      this.policyHolder.password = password;
+      this.policy.status = 'active';
+      this.policy.username = username;
+      this.policyService.setPolicyHolderData(this.policyHolder);
+      console.log('Policy data', this.policy);
+
+      this.policyService.createPolicy().subscribe(response => {
+        console.log('Policy created successfully', response);
+        this.policyService.createPolicyHolder().subscribe(response => {
+          console.log('Policy holder created successfully', response);
+          this.router.navigate(['/login']);
+        }, error => {
+          console.error('Error creating policy holder', error);
+        });
+      }, error => {
+        console.error('Error creating policy', error);
+      });
+    }
   }
 }

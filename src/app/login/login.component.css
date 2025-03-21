@@ -1,0 +1,35 @@
+.container {
+    margin-top: 5rem;
+  }
+  
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .btn-primary {
+    background-color: #ff1100;
+    border-color: #ff0800;
+    border-radius: 5px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #b30c00;
+    border-color: #b30c00;
+  }

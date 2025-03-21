@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+/* Text size */
+.small-text {
+    font-size: 0.875rem; /* Decrease text size */
+  }
+  
+  /* Button styles */
+  .btn-darkred {
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 0.25rem; /* Rounded corners */
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem; /* Decrease button text size */
+    cursor: pointer;
+    display: inline-block; /* Ensure the button fits the text size */
+  }
+  
+  .btn-darkred:hover {
+    background-color: #8b0000;
+  }
+  
+  .btn-outline-primary {
+    border: 1px solid #007bff;
+    color: #007bff;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }

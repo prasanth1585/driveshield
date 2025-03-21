@@ -1,28 +1,33 @@
-/* filepath: /c:/Users/pvipparl/workspace/DriveShield/src/app/insurance-form/insurance-form.component.css */
-.container {
-    margin-top: 5rem;
-  }
-  
-  .card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-  }
-  
-  .btn-outline-primary {
-    border-radius: 5px;
-  }
-  
-  .btn-outline-primary:hover {
-    background-color: #007bff;
-    color: white;
-  }
+.small-text {
+  font-size: 0.875rem; /* Decrease text size */
+}
+
+.btn-darkred {
+  background-color: darkred;
+  color: white;
+  border: none;
+  border-radius: 0.25rem; /* Rounded corners */
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem; /* Decrease button text size */
+  cursor: pointer;
+  display: inline-block; /* Ensure the button fits the text size */
+}
+
+.btn-darkred:hover {
+  background-color: #8b0000;
+}
+
+.btn-outline-primary {
+  border: 1px solid #007bff;
+  color: #007bff;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}

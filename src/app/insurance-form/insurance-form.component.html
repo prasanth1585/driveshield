@@ -1,38 +1,65 @@
-<!-- filepath: /c:/Users/pvipparl/workspace/DriveShield/src/app/insurance-form/insurance-form.component.html -->
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-6"> <!-- Reduced the width of the form -->
       <div class="card shadow-lg">
         <div class="card-body">
           <h5 class="card-title text-center">Insurance Form</h5>
-          <form>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <label>Do you have insurance?</label>
+              <label for="firstName" class="small-text">First Name</label>
+              <input type="text" id="firstName" class="form-control small-text" formControlName="firstName">
+            </div>
+            <div class="form-group mt-3">
+              <label for="lastName" class="small-text">Last Name</label>
+              <input type="text" id="lastName" class="form-control small-text" formControlName="lastName">
+            </div>
+            <div class="form-group mt-3">
+              <label for="email" class="small-text">Email ID</label>
+              <input type="email" id="email" class="form-control small-text" formControlName="email">
+            </div>
+            <div class="form-group mt-3">
+              <label for="phoneNumber" class="small-text">Phone Number</label>
+              <input type="text" id="phoneNumber" class="form-control small-text" formControlName="phoneNumber">
+            </div>
+            <div class="form-group mt-3">
+              <label for="address" class="small-text">Address</label>
+              <input type="text" id="address" class="form-control small-text" formControlName="address">
+            </div>
+            <div class="form-group mt-3">
+              <label for="licenseNumber" class="small-text">License Number</label>
+              <input type="text" id="licenseNumber" class="form-control small-text" formControlName="licenseNumber">
+            </div>
+            <div class="form-group mt-3">
+              <label for="dob" class="small-text">Date of Birth</label>
+              <input type="date" id="dob" class="form-control small-text" formControlName="dob">
+            </div>
+            <div class="form-group mt-3">
+              <label class="small-text">Do you have insurance?</label>
               <div>
-                <button type="button" class="btn btn-outline-primary me-2">Yes</button>
-                <button type="button" class="btn btn-outline-primary">No</button>
+                <button type="button" class="btn btn-darkred me-2" (click)="setInsuranceStatus(true)">Yes</button>
+                <button type="button" class="btn btn-darkred" (click)="setInsuranceStatus(false)">No</button>
               </div>
             </div>
             <div class="form-group mt-3">
-              <label>Number of cars to insure</label>
+              <label class="small-text">Number of cars to insure</label>
               <div>
-                <button type="button" class="btn btn-outline-primary me-2" (click)="setNumberOfCars(1)">1</button>
-                <button type="button" class="btn btn-outline-primary me-2" (click)="setNumberOfCars(2)">2</button>
-                <button type="button" class="btn btn-outline-primary me-2" (click)="setNumberOfCars(3)">3</button>
-                <button type="button" class="btn btn-outline-primary" (click)="setNumberOfCars(4)">4+</button>
+                <button type="button" class="btn btn-darkred me-2" (click)="setNumberOfCars(1)">1</button>
+                <button type="button" class="btn btn-darkred me-2" (click)="setNumberOfCars(2)">2</button>
+                <button type="button" class="btn btn-darkred me-2" (click)="setNumberOfCars(3)">3</button>
+                <button type="button" class="btn btn-darkred" (click)="setNumberOfCars(4)">4+</button>
               </div>
             </div>
             <div class="form-group mt-3">
-              <label>Number of drivers</label>
+              <label class="small-text">Number of drivers</label>
               <div>
-                <button type="button" class="btn btn-outline-primary me-2" (click)="setNumberOfDrivers(1)">1</button>
-                <button type="button" class="btn btn-outline-primary me-2" (click)="setNumberOfDrivers(2)">2</button>
-                <button type="button" class="btn btn-outline-primary me-2" (click)="setNumberOfDrivers(3)">3</button>
-                <button type="button" class="btn btn-outline-primary" (click)="setNumberOfDrivers(4)">4+</button>
+                <button type="button" class="btn btn-darkred me-2" (click)="setNumberOfDrivers(1)">1</button>
+                <button type="button" class="btn btn-darkred me-2" (click)="setNumberOfDrivers(2)">2</button>
+                <button type="button" class="btn btn-darkred me-2" (click)="setNumberOfDrivers(3)">3</button>
+                <button type="button" class="btn btn-darkred" (click)="setNumberOfDrivers(4)">4+</button>
               </div>
             </div>
+            <button type="submit" class="btn btn-darkred mt-3">Add Vehicles</button>
           </form>
-          <button type="button" class="btn btn-primary mt-3 w-100" (click)="navigateToVehicleForm()">Add Vehicles</button>
         </div>
       </div>
     </div>

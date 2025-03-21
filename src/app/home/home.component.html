@@ -1,7 +1,43 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/get-quote']">Get a Quote</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="insuranceDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Insurance Plans
+          </a>
+          <div class="dropdown-menu" aria-labelledby="insuranceDropdown">
+            <a class="dropdown-item" [routerLink]="['/insurance/liability']">Liability Coverage</a>
+            <a class="dropdown-item" [routerLink]="['/insurance/comprehensive']">Comprehensive Coverage</a>
+            <a class="dropdown-item" [routerLink]="['/insurance/collision']">Collision Coverage</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/support']">Support & FAQs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" [routerLink]="['/login']">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid mt-0">
+  <div class="row no-gutters">
     <div class="col-md-6">
-      <div class="card shadow-lg">
+      <div class="card shadow-lg border-0">
         <div class="card-body">
           <h5 class="card-title text-center">Start Your Quote Today</h5>
           <form (ngSubmit)="onSubmit()">
@@ -9,34 +45,22 @@
               <label for="zipCode">Zip Code</label>
               <input type="text" class="form-control" id="zipCode" placeholder="Enter zip code" [(ngModel)]="zipCode" name="zipCode" required>
             </div>
-            <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
+            <button type="submit" class="btn btn-danger btn-small mt-3 w-100">Get Quote</button>
           </form>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card shadow-lg">
-        <div class="card-body">
-          <h5 class="card-title text-center">Login</h5>
-          <form (ngSubmit)="onLogin()">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="email" name="email" required>
-            </div>
-            <div class="form-group mt-3">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Enter password" [(ngModel)]="password" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3 w-100">Login</button>
-          </form>
-          <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-            {{ errorMessage }}
-          </div>
-          <div class="text-center mt-3">
-            <a [routerLink]="['/register']">Register</a>
-          </div>
-        </div>
+    <div class="col-md-6 info-background"> <!-- Adjusted the width to col-md-6 -->
+      <div class="info-content">
+        <h2>Welcome to DriveShield – Protecting You on the Road!</h2>
+        <p>Finding the right auto insurance has never been easier. At DriveShield, we offer affordable, customizable coverage tailored to your needs. Whether you're looking for liability, comprehensive, or collision coverage, we provide fast, reliable protection for you and your vehicle. Get a free quote instantly, manage your policy with ease, and enjoy hassle-free claims processing when you need it most. Drive with confidence knowing that we’ve got you covered every mile of the way. Start your journey today—get a quote now!</p>
       </div>
     </div>
   </div>
 </div>
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">© 2025 DriveShield. All rights reserved.</span>
+  </div>
+</footer>

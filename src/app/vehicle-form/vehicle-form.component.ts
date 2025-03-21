@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf, CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Vehicle, Model } from '../models/vehicle.model';
+import { PolicyService } from '../services/policy.service';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -24,7 +25,8 @@ export class VehicleFormComponent implements OnInit {
     private vehicleService: VehicleService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private policyService: PolicyService
   ) {
     this.vehicleForms = this.fb.array([]);
     this.form = this.fb.group({
@@ -59,7 +61,8 @@ export class VehicleFormComponent implements OnInit {
     return this.fb.group({
       make: ['', Validators.required],
       model: ['', Validators.required],
-      year: ['', Validators.required]
+      year: ['', Validators.required],
+      vin: ['', Validators.required]
     });
   }
 
@@ -81,7 +84,15 @@ export class VehicleFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const vehicles = this.form.value.vehicles;
-    this.router.navigate(['/driver-form'], { queryParams: { vehicles: JSON.stringify(vehicles), drivers: this.numberOfDrivers } });
+    if (this.form.valid) {
+      const vehicles = this.form.value.vehicles.map((vehicle: any) => ({
+        make: vehicle.make,
+        model: vehicle.model,
+        year: vehicle.year,
+        vin: vehicle.vin
+      }));
+      this.policyService.setPolicyData({ vehicles });
+      this.router.navigate(['/driver-form'], { queryParams: { drivers: this.numberOfDrivers } });
+    }
   }
 }

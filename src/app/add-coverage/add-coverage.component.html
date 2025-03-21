@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <div class="col-12">
+          <h5>Selected Coverages</h5>
+          <ul class="list-group">
+            <li *ngFor="let coverage of selectedCoverages; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+              {{ coverage.name }} - {{ coverage.description }} ({{ coverage.premiumRate }})
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeSelectedCoverage(i)">X</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <h5>Coverage List</h5>
+          <div class="row mb-2">
+            <div class="col-md-12">
+              <label for="standardCoverage">Standard Coverage</label>
+              <select id="standardCoverage" class="form-control" formControlName="standardCoverageId" (change)="onCoverageSelect()">
+                <option *ngFor="let coverage of standardCoverages" [value]="coverage.id">
+                  {{ coverage.name }} - {{ coverage.description }} ({{ coverage.premiumRate }})
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Review Information</button>
+    </form>
+  </div>
