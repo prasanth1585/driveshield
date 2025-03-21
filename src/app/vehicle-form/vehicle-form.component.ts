@@ -10,7 +10,7 @@ import { PolicyService } from '../services/policy.service';
 @Component({
   selector: 'app-vehicle-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgIf, HttpClientModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, HttpClientModule, CommonModule],
   templateUrl: './vehicle-form.component.html',
   styleUrls: ['./vehicle-form.component.css']
 })
